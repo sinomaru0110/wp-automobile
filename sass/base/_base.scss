@@ -1,15 +1,26 @@
 @use "../global" as *;
 html {
   font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+#philosophy,
+#access,
+#companyProfile {
+  scroll-margin-top: 180px;
+
+  @include mq("lg") {
+    scroll-margin-top: 80px;
+  }
 }
 
 body {
   font-family: $base-font;
 }
 
-// PCでは電話番号のクリックを無効にする
-a[href^="tel:"] {
+a[href^="tel:"]:not(.c-contact__btn) {
   pointer-events: none;
+
   @include mq("md") {
     pointer-events: auto;
   }

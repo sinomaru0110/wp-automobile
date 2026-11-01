@@ -1,0 +1,46 @@
+@use "../global" as *;
+
+.c-sectionTitle {
+  display: flex;
+  flex-direction: column;
+}
+
+.c-sectionTitle__label {
+  font-family: $base-font;
+  font-weight: $bold;
+  font-size: 16px;
+  color: $link-navy;
+
+  @include mq("md") {
+    font-size: 12px;
+  }
+}
+
+.c-sectionTitle__headingRow {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  @include mq("md") {
+    gap: 12px;
+  }
+}
+
+.c-sectionTitle__heading {
+  font-family: $second-font;
+  font-weight: $bold;
+  font-size: 40px;
+  line-height: 1.48;
+  color: $black;
+
+  @include mq("md") {
+    font-size: 26px;
+  }
+}
+
+.c-sectionTitle__line {
+  width: 60px;
+  height: 2px;
+  flex-shrink: 0;
+  background-color: $black;
+}

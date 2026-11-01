@@ -1,0 +1,36 @@
+@use "../global" as *;
+
+.c-backButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding-block: 12px;
+  padding-inline: 86px;
+  border: 1px solid $link-navy;
+  border-radius: 4px;
+}
+
+.c-backButton__icon {
+  display: inline-flex;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+
+  img {
+    display: block;
+  }
+}
+
+.c-backButton__text {
+  font-family: $base-font;
+  font-weight: $medium;
+  font-size: 14px;
+  line-height: 1.448;
+  color: $link-navy;
+  white-space: nowrap;
+}
+
+@media (any-hover: hover) {
+  .c-backButton:hover .c-backButton__icon {
+    transform: translateX(-5px);
+  }
+}

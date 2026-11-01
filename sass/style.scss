@@ -1,9 +1,5 @@
-@use "./base/base";
-@use "./base/reset";
-@use "./module/top";
-@use "./module/header";
-@use "./module/inner";
-@use "./module/title";
-@use "./module/section-title";
-@use "./module/tab";
+@use "./base";
+@use "./component" as *;
 @use "./global" as *;
+@use "./project" as *;
+@use "./layout" as *;

@@ -1,23 +1,28 @@
 @use "sass:math";
+// 内側コンテナ幅 (PC: 1440幅中の共通インナー幅)
+$inner: 1100px;
+
 //ブレイクポイントの値
 $breakpoints: (
   sp: 375,
   md: 768,
   lg: 1024,
+  lg2: 1200,
   xl: 1440,
 );
 
 //メディアクエリー
-$mediaqueries: (
+$mediaquerys: (
   sp: "screen and (max-width: #{map-get($breakpoints,'sp')}px)",
   md: "screen and (max-width: #{map-get($breakpoints,'md')}px)",
   lg: "screen and (max-width: #{map-get($breakpoints,'lg')}px)",
+  lg2: "screen and (max-width: #{map-get($breakpoints,'lg2')}px)",
   xl: "screen and (max-width: #{map-get($breakpoints,'xl')}px)",
 );
 
 // ブレイクポイントの設定
 @mixin mq($mediaquery: md) {
-  @media #{map-get($mediaqueries, $mediaquery)} {
+  @media #{map-get($mediaquerys, $mediaquery)} {
     @content;
   }
 }

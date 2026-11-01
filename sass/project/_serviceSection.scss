@@ -1,0 +1,161 @@
+@use "../global" as *;
+
+.p-serviceSection {
+  max-width: 1200px;
+  margin-inline: auto;
+  margin-bottom: 120px;
+
+  @include mq("md") {
+    max-width: none;
+    margin-top: 50px;
+  }
+}
+
+.p-serviceSection__row {
+  display: flex;
+  background-color: $work-news-bg;
+
+  @include mq("md") {
+    flex-direction: column;
+  }
+}
+
+.p-serviceSection__body {
+  flex: 1;
+  min-width: 0;
+  padding: 111px 40px 0 50px;
+
+  @include mq("md") {
+    padding: 60px 20px 0;
+  }
+}
+
+.p-serviceSection__head {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.p-serviceSection__number {
+  font-family: $second-font;
+  font-weight: $bold;
+  font-size: 40px;
+  line-height: 1.482;
+  color: $link-navy;
+
+  @include mq("md") {
+    font-size: 32px;
+  }
+}
+
+.p-serviceSection__divider {
+  width: 1px;
+  height: 34px;
+  background-color: $black;
+  flex-shrink: 0;
+
+  @include mq("md") {
+    height: 30px;
+  }
+}
+
+.p-serviceSection__title {
+  margin-top: 20px;
+  font-family: $base-font;
+  font-weight: $bold;
+  font-size: 28px;
+  line-height: 1.448;
+  color: $black;
+
+  @include mq("md") {
+    font-size: 20px;
+  }
+}
+
+.p-serviceSection__lead {
+  max-width: 400px;
+  margin-top: 20px;
+  font-family: $base-font;
+  font-weight: $medium;
+  font-size: 22px;
+  line-height: 2.0909;
+  color: $black;
+
+  @include mq("md") {
+    max-width: none;
+    font-size: 14px;
+    line-height: 2.286;
+  }
+}
+
+.p-serviceSection__photo {
+  flex: 0 0 640px;
+  width: 640px;
+  aspect-ratio: 128 / 100;
+
+  @include mq("md") {
+    flex: none;
+    width: 100%;
+    max-width: calc(100% - 40px);
+    aspect-ratio: 335 / 220;
+    margin: 20px auto 0;
+  }
+}
+
+.p-serviceSection__photoImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.p-serviceSection__features {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-top: 30px;
+  padding-left: 50px;
+
+  @include mq("md") {
+    margin-top: 20px;
+    padding-left: 20px;
+  }
+}
+
+.p-serviceSection__featuresEn {
+  font-family: $second-font;
+  font-weight: $medium;
+  font-size: 22px;
+  color: $black;
+
+  @include mq("md") {
+    font-size: 18px;
+  }
+}
+
+.p-serviceSection__featuresJa {
+  font-family: $base-font;
+  font-weight: $medium;
+  font-size: 12px;
+  color: $text-gray;
+
+  @include mq("md") {
+    font-size: 10px;
+  }
+}
+
+.p-serviceSection__text {
+  max-width: 1100px;
+  margin-top: 20px;
+  padding-inline: 50px;
+  font-family: $base-font;
+  font-weight: $normal;
+  font-size: 16px;
+  line-height: 2.375;
+  color: $black;
+
+  @include mq("md") {
+    padding-inline: 20px;
+    font-size: 14px;
+    line-height: 2.286;
+  }
+}

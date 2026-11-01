@@ -1,0 +1,118 @@
+@use "../global" as *;
+
+.c-sideBar {
+  width: 300px;
+  flex-shrink: 0;
+
+  @include mq("md") {
+    width: calc(100% - 30px);
+    margin-inline: 15px;
+    margin-top: 57px;
+    margin-bottom: 80px;
+  }
+}
+
+.c-sideBar__block {
+  & + & {
+    margin-top: 40px;
+  }
+}
+
+.c-sideBar__heading {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  padding-inline: 18px;
+  background-color: $footer-navy;
+  font-family: $base-font;
+  font-weight: $medium;
+  font-size: 14px;
+  color: $white;
+}
+
+.c-sideBar__newsList {
+  display: flex;
+  flex-direction: column;
+  padding-block: 18px;
+  background-color: $white;
+}
+
+.c-sideBar__newsItem {
+  padding-inline: 18px;
+  padding-block: 18px;
+  border-bottom: 1px solid $news-detail-divider;
+
+  &:first-child {
+    padding-top: 0;
+  }
+
+  &:last-child {
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+}
+
+.c-sideBar__newsLink {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+}
+
+.c-sideBar__newsThumb {
+  width: 100px;
+  height: 100px;
+  flex-shrink: 0;
+  object-fit: cover;
+}
+
+.c-sideBar__newsBody {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 14px;
+  flex: 1;
+  min-height: 100px;
+  min-width: 0;
+}
+
+.c-sideBar__newsTitle {
+  font-family: $base-font;
+  font-weight: $normal;
+  font-size: 12px;
+  line-height: 28px;
+  color: $news-detail-title;
+}
+
+.c-sideBar__newsDate {
+  font-family: $base-font;
+  font-weight: $bold;
+  font-size: 10px;
+  color: $date-gray;
+}
+
+.c-sideBar__textList {
+  padding: 18px;
+  background-color: $white;
+}
+
+.c-sideBar__textItem {
+  padding-block: 18px;
+  border-bottom: 1px solid $news-detail-divider;
+
+  &:first-child {
+    padding-top: 0;
+  }
+
+  &:last-child {
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+}
+
+.c-sideBar__textLink {
+  display: block;
+  font-family: $base-font;
+  font-weight: $normal;
+  font-size: 14px;
+  color: $black;
+}

@@ -1,0 +1,111 @@
+@use "../global" as *;
+
+.c-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+  height: 180px;
+  background-image: linear-gradient($white, $white);
+  background-repeat: no-repeat;
+  background-position: top left;
+  background-size: 100% 80px;
+  pointer-events: none;
+
+  @include mq("lg") {
+    height: 80px;
+    background-image: none;
+    padding-right: 20px;
+  }
+}
+
+.c-header__logo {
+  display: block;
+  flex-shrink: 0;
+  pointer-events: auto;
+}
+
+.c-header__logo img {
+  width: 258px;
+  height: 180px;
+
+  @include mq("lg") {
+    width: 114px;
+    height: 80px;
+  }
+}
+
+.c-header__nav {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  height: 80px;
+  flex-shrink: 0;
+  pointer-events: auto;
+
+  @include mq("lg") {
+    display: none;
+  }
+}
+
+.c-header__navList {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+.c-header__navLink {
+  font-family: $third-font;
+  font-size: 16px;
+  font-weight: $medium;
+  color: $black;
+  white-space: nowrap;
+}
+
+.c-header__contact {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 187px;
+  height: 80px;
+  background-color: $navy;
+}
+
+.c-header__contactIcon {
+  width: 22px;
+  height: 17.6px;
+  flex-shrink: 0;
+}
+
+.c-header__contactText {
+  font-family: $third-font;
+  font-size: 16px;
+  font-weight: $medium;
+  color: $white;
+  white-space: nowrap;
+}
+
+.c-header__hamburger {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  pointer-events: auto;
+
+  @include mq("lg") {
+    display: flex;
+  }
+}
+
+.c-header__hamburgerIcon {
+  width: 25px;
+  height: 15px;
+}

@@ -1,0 +1,105 @@
+@use "../global" as *;
+
+.p-worksPager {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  max-width: 1098px;
+  margin-inline: auto;
+  margin-top: 56px;
+  margin-bottom: 120px;
+
+  @include mq("md") {
+    justify-content: center;
+    margin-top: 40px;
+    margin-bottom: 80px;
+  }
+}
+
+.p-worksPager__arrow {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 11px;
+  height: 18px;
+  padding: 0;
+  flex-shrink: 0;
+  background-color: transparent;
+  transition: opacity 0.3s ease;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 44px;
+    height: 44px;
+    transform: translate(-50%, -50%);
+  }
+
+  &:hover {
+    opacity: 0.6;
+  }
+
+  &--prev {
+    margin-left: 321px;
+    margin-right: 20px;
+
+    @include mq("md") {
+      margin-left: 0;
+      margin-right: 20px;
+    }
+  }
+
+  &--next {
+    margin-left: 20px;
+
+    @include mq("md") {
+      margin-left: 20px;
+    }
+  }
+}
+
+.p-worksPager__arrowIcon {
+  width: 11px;
+  height: 18px;
+
+  .p-worksPager__arrow--next & {
+    transform: scaleX(-1);
+  }
+}
+
+.p-worksPager__list {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.p-worksPager__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  font-family: $second-font;
+  font-weight: $medium;
+  font-size: 14px;
+  line-height: 1.482;
+  color: $text-dark;
+  background-color: $pager-bg;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+
+  &--current {
+    background-color: $link-navy;
+    color: $white;
+  }
+
+  @include mq("md") {
+    width: 36px;
+    height: 36px;
+    font-size: 12px;
+  }
+}

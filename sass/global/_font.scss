@@ -1,8 +1,8 @@
 @use "sass:math";
 // 文字フォントの種類
-$base-font: "";
-$second-font: "";
-$third-font: "";
+$base-font: "Noto Sans JP", sans-serif; // 日本語本文
+$second-font: "Oswald", sans-serif; // 英字大見出し
+$third-font: "Roboto", sans-serif; // ナビ・ボタン等の英字
 
 // 文字の太さ
 $regular: 300;

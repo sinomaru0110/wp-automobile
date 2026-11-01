@@ -2,4 +2,17 @@
 // 色
 $white: #fff;
 $black: #000;
-$gray: #e0e0e0;
+$navy: #011950; // ブランドカラー(Service READ MOREボタン枠線・文字色等)
+$link-navy: #001e63; // About READ MOREリンク文字色
+$tag-bg: #f3f3f3; // タグ・薄グレー背景
+$footer-navy: #001135; // フッター背景色
+$work-news-bg: #f8f8f8; // work/newsセクション共通背景
+$divider: #e2e2e2; // work/newsのカード・リスト区切り線
+$text-gray: #626262; // work本文・タグ文字色
+$date-gray: #a9a9a9; // 日付・非アクティブカテゴリ文字色
+$text-dark: #242424; // パンくず現在ページ文字色
+$pager-bg: #e9eeef; // news一覧ページネーション非アクティブ背景色
+$news-detail-divider: #e4e4e4; // news詳細ページ 区切り線・下線色
+$news-detail-h2-bg: #f8f9f9; // news詳細ページ H2見出し背景色(opacity 0.8で使用)
+$news-detail-title: #040404; // サイドバー記事タイトル文字色
+$required-red: #e20000; // フォーム必須マーク(*)文字色

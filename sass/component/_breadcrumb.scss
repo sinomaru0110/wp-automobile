@@ -1,0 +1,101 @@
+@use "../global" as *;
+
+.c-breadcrumb {
+  width: 100%;
+  margin-top: 20px;
+
+  @include mq("md") {
+    margin-top: 10px;
+  }
+}
+
+.c-breadcrumb__list {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  max-width: 1270px;
+  margin-inline: auto;
+  padding-right: 60px;
+
+  @include mq("lg") {
+    padding-inline: 20px;
+  }
+
+  @include mq("md") {
+    padding-right: 10px;
+  }
+}
+
+.c-breadcrumb__link {
+  display: block;
+  padding-block: 13px;
+  margin-block: -13px;
+  font-family: $third-font;
+  font-size: 15px;
+  color: $date-gray;
+
+  @include mq("md") {
+    padding-block: 15px;
+    margin-block: -15px;
+    font-size: 10px;
+  }
+}
+
+.c-breadcrumb__step {
+  display: block;
+  padding-block: 13px;
+  margin-block: -13px;
+  font-family: $third-font;
+  font-size: 15px;
+  color: $date-gray;
+
+  @include mq("md") {
+    padding-block: 15px;
+    margin-block: -15px;
+    font-size: 10px;
+  }
+}
+
+.c-breadcrumb__separator {
+  display: block;
+  width: 20px;
+  height: 1px;
+  flex-shrink: 0;
+}
+
+.c-breadcrumb__current {
+  display: block;
+  max-width: 200px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-family: $third-font;
+  font-size: 15px;
+  color: $text-dark;
+
+  @include mq("md") {
+    max-width: 120px;
+    font-size: 10px;
+  }
+}
+
+.c-breadcrumb__current--pcOnly {
+  @include mq("md") {
+    display: none;
+  }
+}
+
+.c-breadcrumb__current--spOnly {
+  display: none;
+
+  @include mq("md") {
+    display: block;
+  }
+}
+
+.c-breadcrumb__item--pcOnly {
+  @include mq("md") {
+    display: none;
+  }
+}

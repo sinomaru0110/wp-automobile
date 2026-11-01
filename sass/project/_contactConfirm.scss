@@ -1,0 +1,132 @@
+@use "../global" as *;
+
+.p-contactConfirm {
+  width: 680px;
+  max-width: 100%;
+  margin-inline: auto;
+  margin-top: 60px;
+  margin-bottom: 120px;
+
+  // 1024px以下はヘッダー(80px)が固定表示になるため、その下に30pxの余白を取る
+  @include mq("lg") {
+    margin-top: 110px;
+  }
+
+  @include mq("md") {
+    width: auto;
+    padding-inline: 20px;
+    margin-top: 110px;
+    margin-bottom: 80px;
+  }
+}
+
+.p-contactConfirm__title {
+  font-family: $base-font;
+  font-weight: $normal;
+  font-size: 16px;
+  line-height: 1.448;
+  color: $black;
+
+  @include mq("md") {
+    font-size: 14px;
+  }
+}
+
+.p-contactConfirm__list {
+  margin-top: 100px;
+
+  @include mq("md") {
+    margin-top: 40px;
+  }
+}
+
+.p-contactConfirm__row {
+  display: flex;
+  align-items: flex-start;
+
+  @include mq("md") {
+    flex-direction: column;
+  }
+}
+
+.p-contactConfirm__row + .p-contactConfirm__row {
+  margin-top: 40px;
+
+  @include mq("md") {
+    margin-top: 30px;
+  }
+}
+
+.p-contactConfirm__label {
+  width: 192px;
+  max-width: 100%;
+  flex-shrink: 0;
+  font-family: $base-font;
+  font-weight: $medium;
+  font-size: 15px;
+  line-height: 1.448;
+  color: $black;
+
+  @include mq("md") {
+    width: auto;
+  }
+}
+
+.p-contactConfirm__required {
+  color: $required-red;
+}
+
+.p-contactConfirm__value {
+  font-family: $base-font;
+  font-weight: $normal;
+  font-size: 14px;
+  line-height: 1.448;
+  color: $black;
+
+  @include mq("md") {
+    margin-top: 10px;
+  }
+}
+
+.p-contactConfirm__value--multiline {
+  line-height: 32px;
+}
+
+.p-contactConfirm__buttons {
+  display: flex;
+  gap: 80px;
+  margin-top: 40px;
+
+  @include mq("md") {
+    gap: 23px;
+  }
+}
+
+.p-contactConfirm__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 280px;
+  height: 66px;
+  border-radius: 4px;
+  font-family: $base-font;
+  font-weight: $medium;
+  font-size: 18px;
+
+  @include mq("md") {
+    width: 151px;
+    height: 43px;
+    font-size: 14px;
+  }
+}
+
+.p-contactConfirm__btn--back {
+  background-color: $white;
+  border: 2px solid $navy;
+  color: $navy;
+}
+
+.p-contactConfirm__btn--submit {
+  background-color: $navy;
+  color: $white;
+}
