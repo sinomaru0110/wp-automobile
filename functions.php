@@ -315,3 +315,18 @@ add_action('admin_notices', 'automobile_multistep_notice');
 add_filter('cf7msm_form_field_value', function ($value) {
     return is_string($value) ? esc_html($value) : $value;
 });
+
+/**
+ * 404ページ：3秒後にトップページへ遷移
+ */
+function automobile_404_redirect()
+{
+    if (!is_404()) {
+        return;
+    }
+    printf(
+        '<script>setTimeout(function () { window.location.href = %s; }, 3000);</script>' . "\n",
+        wp_json_encode(home_url('/'))
+    );
+}
+add_action('wp_footer', 'automobile_404_redirect', 99);
