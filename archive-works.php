@@ -59,62 +59,33 @@
       ?>
     </div>
   </section>
-  <nav class="p-worksPager" aria-label="ページネーション">
-    <a href="<?php echo esc_url(get_pagenum_link(max(1, $paged - 1))); ?>" class="p-worksPager__arrow p-worksPager__arrow--prev" aria-label="前のページ">
-      <img
-        src="<?php echo esc_url(get_theme_file_uri('/img/news/group-pager-arrow.svg')); ?>"
-        width="11"
-        height="18"
-        alt="前のページ"
-        class="p-worksPager__arrowIcon"
-      />
-    </a>
-    <ol class="p-worksPager__list">
-      <?php for ($page_number = 1; $page_number <= max(1, (int) $the_query->max_num_pages); $page_number++) : ?>
-        <li><a href="<?php echo esc_url(get_pagenum_link($page_number)); ?>" class="p-worksPager__link<?php if ($page_number === $paged) { echo ' p-worksPager__link--current'; } ?>"<?php if ($page_number === $paged) { echo ' aria-current="page"'; } ?>><?php echo esc_html($page_number); ?></a></li>
-      <?php endfor; ?>
-    </ol>
-    <a href="<?php echo esc_url(get_pagenum_link(min(max(1, (int) $the_query->max_num_pages), $paged + 1))); ?>" class="p-worksPager__arrow p-worksPager__arrow--next" aria-label="次のページ">
-      <img
-        src="<?php echo esc_url(get_theme_file_uri('/img/news/group-pager-arrow.svg')); ?>"
-        width="11"
-        height="18"
-        alt="次のページ"
-        class="p-worksPager__arrowIcon"
-      />
-    </a>
-  </nav>
-  <section class="c-contact" id="contact">
-    <div class="c-contact__photo">
-      <picture>
-        <source
-          media="(max-width: 768px)"
-          srcset="<?php echo esc_url(get_theme_file_uri('/img/top/contact-sp-photo.webp')); ?>"
-        />
+  <?php if ((int) $the_query->max_num_pages > 1) : // 2ページ以上あるときだけページ送りを出す ?>
+    <nav class="p-worksPager" aria-label="ページネーション">
+      <a href="<?php echo esc_url(get_pagenum_link(max(1, $paged - 1))); ?>" class="p-worksPager__arrow p-worksPager__arrow--prev" aria-label="前のページ">
         <img
-          src="<?php echo esc_url(get_theme_file_uri('/img/top/contact-photo.webp')); ?>"
-          width="820"
-          height="446"
-          alt="輸入車ショールームの様子"
+          src="<?php echo esc_url(get_theme_file_uri('/img/news/group-pager-arrow.svg')); ?>"
+          width="11"
+          height="18"
+          alt="前のページ"
+          class="p-worksPager__arrowIcon"
         />
-      </picture>
-    </div>
-    <div class="c-contact__body">
-      <p class="c-contact__lead">
-        輸入車の購入や修理のご相談などお気軽にお問い合わせください。
-      </p>
-      <div class="c-contact__btns">
-        <a href="<?php echo esc_url(home_url('/contact/')); ?>" class="c-contact__btn c-contact__btn--mail">
-          <span class="c-contact__btnIcon c-contact__btnIcon--mail"></span>
-          <span class="c-contact__btnText">お問い合わせ</span>
-        </a>
-        <a href="tel:0000000000" class="c-contact__btn c-contact__btn--tel">
-          <span class="c-contact__btnIcon c-contact__btnIcon--tel"></span>
-          <span class="c-contact__btnText">0000-000-000</span>
-        </a>
-      </div>
-      <p class="c-contact__hours">受付時間 : 火曜日を除く 10：00〜18：00</p>
-    </div>
-  </section>
+      </a>
+      <ol class="p-worksPager__list">
+        <?php for ($page_number = 1; $page_number <= (int) $the_query->max_num_pages; $page_number++) : ?>
+          <li><a href="<?php echo esc_url(get_pagenum_link($page_number)); ?>" class="p-worksPager__link<?php if ($page_number === $paged) { echo ' p-worksPager__link--current'; } ?>"<?php if ($page_number === $paged) { echo ' aria-current="page"'; } ?>><?php echo esc_html($page_number); ?></a></li>
+        <?php endfor; ?>
+      </ol>
+      <a href="<?php echo esc_url(get_pagenum_link(min((int) $the_query->max_num_pages, $paged + 1))); ?>" class="p-worksPager__arrow p-worksPager__arrow--next" aria-label="次のページ">
+        <img
+          src="<?php echo esc_url(get_theme_file_uri('/img/news/group-pager-arrow.svg')); ?>"
+          width="11"
+          height="18"
+          alt="次のページ"
+          class="p-worksPager__arrowIcon"
+        />
+      </a>
+    </nav>
+  <?php endif; ?>
+  <?php get_template_part('template-parts/contact'); ?>
 </main>
 <?php get_footer(); ?>

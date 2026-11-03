@@ -1804,6 +1804,12 @@ select::-ms-expand {
   }
 }
 
+.p-news__catLink {
+  display: flex;
+  align-items: center;
+  color: inherit;
+}
+
 .p-news__catMarker {
   width: 8px;
   height: 8px;
@@ -3037,6 +3043,13 @@ select::-ms-expand {
   }
 }
 
+.p-newsList__navLink {
+  display: flex;
+  align-items: center;
+  column-gap: 6px;
+  color: inherit;
+}
+
 .p-newsList__navMarker {
   width: 8px;
   height: 8px;
@@ -4046,6 +4059,7 @@ select::-ms-expand {
 }
 
 .p-newsDetail__date {
+  display: block;
   margin-top: 20px;
   font-family: "Noto Sans JP", sans-serif;
   font-weight: 700;

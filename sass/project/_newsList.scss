@@ -83,6 +83,13 @@
   }
 }
 
+.p-newsList__navLink {
+  display: flex;
+  align-items: center;
+  column-gap: 6px;
+  color: inherit;
+}
+
 .p-newsList__navMarker {
   width: 8px;
   height: 8px;

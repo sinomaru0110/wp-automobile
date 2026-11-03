@@ -27,6 +27,19 @@ if (is_page('about')) {
     $alt      = '黒い高級車の走行風景';
     $title_en = 'News';
     $title_ja = 'お知らせ';
+} elseif (is_category() || is_date()) {
+    // カテゴリー別・月別のお知らせ一覧（日本語タイトルにカテゴリー名・年月を出す）
+    $block    = 'p-newsFv';
+    $img_dir  = 'news';
+    $alt      = '黒い高級車の走行風景';
+    $title_en = 'News';
+    if (is_category()) {
+        $title_ja = single_cat_title('', false);
+    } elseif (is_month()) {
+        $title_ja = get_query_var('year') . '年' . (int) get_query_var('monthnum') . '月';
+    } else {
+        $title_ja = get_query_var('year') . '年';
+    }
 } elseif (is_tax('genre')) {
     $block    = 'p-worksFv';
     $img_dir  = 'works';

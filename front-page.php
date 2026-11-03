@@ -328,19 +328,21 @@
               <div class="p-news__catCol">
                 <h2 class="p-news__head">News</h2>
                 <nav class="p-news__cat">
+                  <?php
+                  // お知らせ一覧と、記事が1件以上あるカテゴリーへのリンク
+                  $news_page_id = (int) get_option('page_for_posts');
+                  $news_url = $news_page_id ? get_permalink($news_page_id) : home_url('/news/');
+                  $news_categories = get_categories(array('orderby' => 'term_id', 'order' => 'ASC'));
+                  ?>
                   <ul class="p-news__catList">
                     <li class="p-news__catItem p-news__catItem--active">
-                      <span class="p-news__catMarker"></span>すべてのお知らせ
+                      <a class="p-news__catLink" href="<?php echo esc_url($news_url); ?>"><span class="p-news__catMarker"></span>すべてのお知らせ</a>
                     </li>
-                    <li class="p-news__catItem">
-                      <span class="p-news__catMarker"></span>トピックス
-                    </li>
-                    <li class="p-news__catItem">
-                      <span class="p-news__catMarker"></span>イベント・キャンペーン
-                    </li>
-                    <li class="p-news__catItem">
-                      <span class="p-news__catMarker"></span>入庫車情報
-                    </li>
+                    <?php foreach ($news_categories as $news_category) : ?>
+                      <li class="p-news__catItem">
+                        <a class="p-news__catLink" href="<?php echo esc_url(get_category_link($news_category->term_id)); ?>"><span class="p-news__catMarker"></span><?php echo esc_html($news_category->name); ?></a>
+                      </li>
+                    <?php endforeach; ?>
                   </ul>
                 </nav>
               </div>
@@ -408,37 +410,6 @@
           </div>
         </section>
       </div>
-      <section class="c-contact">
-        <div class="c-contact__photo">
-          <picture>
-            <source
-              media="(max-width: 768px)"
-              srcset="<?php echo esc_url(get_theme_file_uri()); ?>/img/top/contact-sp-photo.webp"
-            />
-            <img
-              src="<?php echo esc_url(get_theme_file_uri()); ?>/img/top/contact-photo.webp"
-              width="820"
-              height="446"
-              alt="輸入車ショールームの様子"
-            />
-          </picture>
-        </div>
-        <div class="c-contact__body">
-          <p class="c-contact__lead">
-            輸入車の購入や修理のご相談などお気軽にお問い合わせください。
-          </p>
-          <div class="c-contact__btns">
-            <a href="<?php echo esc_url(home_url('/contact/')); ?>" class="c-contact__btn c-contact__btn--mail">
-              <span class="c-contact__btnIcon c-contact__btnIcon--mail"></span>
-              <span class="c-contact__btnText">お問い合わせ</span>
-            </a>
-            <a href="tel:0000000000" class="c-contact__btn c-contact__btn--tel">
-              <span class="c-contact__btnIcon c-contact__btnIcon--tel"></span>
-              <span class="c-contact__btnText">0000-000-000</span>
-            </a>
-          </div>
-          <p class="c-contact__hours">受付時間 : 火曜日を除く 10：00〜18：00</p>
-        </div>
-      </section>
+      <?php get_template_part('template-parts/contact'); ?>
     </main>
 <?php get_footer(); ?>

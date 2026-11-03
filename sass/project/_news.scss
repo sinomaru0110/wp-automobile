@@ -95,6 +95,12 @@
   }
 }
 
+.p-news__catLink {
+  display: flex;
+  align-items: center;
+  color: inherit;
+}
+
 .p-news__catMarker {
   width: 8px;
   height: 8px;
