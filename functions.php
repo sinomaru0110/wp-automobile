@@ -70,6 +70,34 @@ function custom_posts_per_page($query)
 add_action('pre_get_posts', 'custom_posts_per_page');
 
 /**
+ * お知らせの絞り込みに表示するカテゴリー（トップ・お知らせ一覧で共通）
+ * 管理画面「投稿 → カテゴリー」で、下記のスラッグのカテゴリーを作成すると表示されます。
+ * ここに書いた順に並びます。記事が1件もないカテゴリーは表示しません。
+ */
+define('AUTOMOBILE_NEWS_CATEGORY_SLUGS', array(
+    'topics',         // トピックス
+    'event-campaign', // イベント・キャンペーン
+    'stock',          // 入庫車状況
+));
+
+function automobile_get_news_categories()
+{
+    $categories = get_categories(array(
+        'slug'       => AUTOMOBILE_NEWS_CATEGORY_SLUGS,
+        'orderby'    => 'slug__in',
+        'hide_empty' => true,
+    ));
+    return is_wp_error($categories) ? array() : $categories;
+}
+
+/** お知らせ一覧ページのURL（設定 → 表示設定 の「投稿ページ」。未設定なら /news/） */
+function automobile_get_news_url()
+{
+    $news_page_id = (int) get_option('page_for_posts');
+    return $news_page_id ? get_permalink($news_page_id) : home_url('/news/');
+}
+
+/**
  * ============================================================
  * お問い合わせ（入力 → 入力確認 → 完了）
  * 使用プラグイン：Contact Form 7 / Contact Form 7 Multi-Step Forms

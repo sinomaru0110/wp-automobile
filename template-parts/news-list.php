@@ -5,16 +5,9 @@
  */
 global $wp_query;
 
-// 「すべてのお知らせ」のリンク先（設定 → 表示設定 の「投稿ページ」。未設定なら /news/）
-$news_page_id = (int) get_option('page_for_posts');
-$news_url = $news_page_id ? get_permalink($news_page_id) : home_url('/news/');
-
-// 記事が1件以上あるカテゴリーを、作成した順に取得
-$news_categories = get_categories(array(
-  'orderby' => 'term_id',
-  'order' => 'ASC',
-  'hide_empty' => true,
-));
+// 「すべてのお知らせ」のリンク先と、絞り込みに出すカテゴリー（functions.php で指定）
+$news_url = automobile_get_news_url();
+$news_categories = automobile_get_news_categories();
 ?>
 <section class="p-newsList">
   <div class="p-newsList__body">

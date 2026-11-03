@@ -329,10 +329,9 @@
                 <h2 class="p-news__head">News</h2>
                 <nav class="p-news__cat">
                   <?php
-                  // お知らせ一覧と、記事が1件以上あるカテゴリーへのリンク
-                  $news_page_id = (int) get_option('page_for_posts');
-                  $news_url = $news_page_id ? get_permalink($news_page_id) : home_url('/news/');
-                  $news_categories = get_categories(array('orderby' => 'term_id', 'order' => 'ASC'));
+                  // お知らせ一覧と、絞り込みに出すカテゴリー（functions.php で指定）
+                  $news_url = automobile_get_news_url();
+                  $news_categories = automobile_get_news_categories();
                   ?>
                   <ul class="p-news__catList">
                     <li class="p-news__catItem p-news__catItem--active">
