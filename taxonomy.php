@@ -1,8 +1,6 @@
 <?php get_header(); ?>
 <?php
 $genre_slug = get_query_var('genre');
-$genre_term = $genre_slug ? get_term_by('slug', $genre_slug, 'genre') : null;
-$genre_name = ($genre_term && !is_wp_error($genre_term)) ? $genre_term->name : 'タクソノミー別一覧';
 $paged = max(1, (int) get_query_var('paged'));
 $args = [
     "post_type" => "works",
@@ -19,40 +17,8 @@ $args = [
 $the_query = new WP_Query($args);
 ?>
 <main>
-    <section class="p-worksFv">
-        <div class="p-worksFv__photo js-fvPhoto">
-            <picture>
-                <source media="(max-width: 768px)" srcset="<?php echo esc_url(get_theme_file_uri('/img/works/fv-photo-sp.webp')); ?>" />
-                <img src="<?php echo esc_url(get_theme_file_uri('/img/works/fv-photo.webp')); ?>" width="1270" height="514" alt="ショールーム内の黄色いスポーツカー" class="p-worksFv__photoImg" />
-            </picture>
-        </div>
-        <div class="p-worksFv__titleWrap js-fvTitle">
-            <div class="p-worksFv__titleBg"></div>
-            <h1 class="p-worksFv__title">
-                <span class="p-worksFv__titleEn">Works</span>
-                <span class="p-worksFv__titleJa"><?php echo esc_html($genre_name); ?></span>
-            </h1>
-        </div>
-    </section>
-    <nav class="c-breadcrumb" aria-label="パンくずリスト">
-        <ol class="c-breadcrumb__list">
-            <li class="c-breadcrumb__item">
-                <a href="/" class="c-breadcrumb__link">Top</a>
-            </li>
-            <li class="c-breadcrumb__item" aria-hidden="true">
-                <img src="<?php echo esc_url(get_theme_file_uri('/img/about/breadcrumb-separator.svg')); ?>" width="20" height="1" alt="区切り線" class="c-breadcrumb__separator" />
-            </li>
-            <li class="c-breadcrumb__item">
-                <a href="<?php echo esc_url(get_post_type_archive_link('works')); ?>" class="c-breadcrumb__link">Works</a>
-            </li>
-            <li class="c-breadcrumb__item" aria-hidden="true">
-                <img src="<?php echo esc_url(get_theme_file_uri('/img/about/breadcrumb-separator.svg')); ?>" width="20" height="1" alt="区切り線" class="c-breadcrumb__separator" />
-            </li>
-            <li class="c-breadcrumb__item">
-                <span class="c-breadcrumb__current" aria-current="page"><?php echo esc_html($genre_name); ?></span>
-            </li>
-        </ol>
-    </nav>
+    <?php get_template_part('template-parts/fv'); ?>
+    <?php get_template_part('template-parts/breadcrumb'); ?>
     <section class="p-worksList">
         <div class="p-worksList__body">
             <?php get_template_part('template-parts/works-tab'); ?>

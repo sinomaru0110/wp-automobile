@@ -1,36 +1,7 @@
 <?php get_header(); ?>
 <main>
-  <section class="p-contactFv">
-    <div class="p-contactFv__photo js-fvPhoto">
-      <picture>
-        <source
-          media="(max-width: 768px)"
-          srcset="<?php echo esc_url(get_theme_file_uri()); ?>/img/contact/fv-photo-sp.webp"
-        />
-        <img
-          src="<?php echo esc_url(get_theme_file_uri()); ?>/img/contact/fv-photo.webp"
-          width="1270"
-          height="514"
-          alt="輸入車ショールームの様子"
-          class="p-contactFv__photoImg"
-        />
-      </picture>
-    </div>
-    <div class="p-contactFv__titleWrap js-fvTitle">
-      <div class="p-contactFv__titleBg"></div>
-      <h1 class="p-contactFv__title">
-        <span class="p-contactFv__titleEn">Contact</span>
-        <span class="p-contactFv__titleJa">お問い合わせ</span>
-      </h1>
-    </div>
-  </section>
-  <nav class="c-breadcrumb" aria-label="パンくずリスト" vocab="https://schema.org/" typeof="BreadcrumbList">
-    <?php if (function_exists('bcn_display')) { ?>
-      <div class="c-breadcrumb__list" vocab="http://schema.org/" typeof="BreadcrumbList">
-        <?php bcn_display(); ?>
-      </div>
-    <?php } ?>
-  </nav>
+  <?php get_template_part('template-parts/fv'); ?>
+  <?php get_template_part('template-parts/breadcrumb'); ?>
 
   <!-- 入力画面 -->
   <section class="p-contactForm">

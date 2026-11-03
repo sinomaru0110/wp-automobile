@@ -1,36 +1,7 @@
 <?php get_header(); ?>
 <main>
-      <section class="p-serviceFv">
-        <div class="p-serviceFv__photo js-fvPhoto">
-          <picture>
-            <source
-              media="(max-width: 768px)"
-              srcset="<?php echo esc_url(get_theme_file_uri()); ?>/img/service/fv-photo-sp.webp"
-            />
-            <img
-              src="<?php echo esc_url(get_theme_file_uri()); ?>/img/service/fv-photo.webp"
-              width="1270"
-              height="514"
-              alt="輸入車ショールームの様子"
-              class="p-serviceFv__photoImg"
-            />
-          </picture>
-        </div>
-        <div class="p-serviceFv__titleWrap js-fvTitle">
-          <div class="p-serviceFv__titleBg"></div>
-          <h1 class="p-serviceFv__title">
-            <span class="p-serviceFv__titleEn">Service</span>
-            <span class="p-serviceFv__titleJa">サービス紹介</span>
-          </h1>
-        </div>
-      </section>
-      <nav class="c-breadcrumb" aria-label="パンくずリスト" vocab="https://schema.org/" typeof="BreadcrumbList">
-      <?php if (function_exists('bcn_display')) { ?>
-        <div class="c-breadcrumb__list" vocab="http://schema.org/" typeof="BreadcrumbList">
-        <?php bcn_display(); ?>
-    </div>
-    <?php } ?>
-      </nav>
+      <?php get_template_part('template-parts/fv'); ?>
+      <?php get_template_part('template-parts/breadcrumb'); ?>
       <section class="p-serviceIntro">
         <nav class="p-serviceIntro__anker" aria-label="ページ内リンク">
           <ul class="p-serviceIntro__ankerList">

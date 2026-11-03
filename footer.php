@@ -1,7 +1,7 @@
 <footer class="c-footer">
       <div class="c-footer__left">
         <div class="c-footer__top">
-          <a href="/" class="c-footer__logo">
+          <a href="<?php echo esc_url(home_url('/')); ?>" class="c-footer__logo">
             <img
               src="<?php echo esc_url(get_theme_file_uri()); ?>/img/top/footer-logo.svg"
               width="258"
@@ -65,19 +65,19 @@
       <nav class="c-footer__nav">
         <ul class="c-footer__navList">
           <li class="c-footer__navItem">
-            <a href="/index.html" class="c-footer__navLink">TOP</a>
+            <a href="<?php echo esc_url(home_url('/')); ?>" class="c-footer__navLink">TOP</a>
           </li>
           <li class="c-footer__navItem">
-            <a href="/about/" class="c-footer__navLink">ABOUT</a>
+            <a href="<?php echo esc_url(home_url('/about/')); ?>" class="c-footer__navLink">ABOUT</a>
           </li>
           <li class="c-footer__navItem">
-            <a href="/service.html" class="c-footer__navLink">SERVICE</a>
+            <a href="<?php echo esc_url(home_url('/service/')); ?>" class="c-footer__navLink">SERVICE</a>
           </li>
           <li class="c-footer__navItem">
             <a href="<?php echo esc_url(get_post_type_archive_link('works')); ?>" class="c-footer__navLink">WORKS</a>
           </li>
           <li class="c-footer__navItem">
-            <a href="/news/" class="c-footer__navLink">NEWS</a>
+            <a href="<?php echo esc_url(home_url('/news/')); ?>" class="c-footer__navLink">NEWS</a>
           </li>
           <li class="c-footer__navItem">
             <a href="<?php echo esc_url(home_url('/contact/')); ?>" class="c-footer__navLink">CONTACT</a>

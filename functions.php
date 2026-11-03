@@ -15,24 +15,47 @@ function my_setup()
 add_action('after_setup_theme', 'my_setup');
 
 /* CSSとJavaScriptの読み込み */
+/*
+ * CSS・JSはすべてここで読み込む（header.php に直接書かない）
+ * - Swiper は CSS と JS を同じバージョンに揃える
+ * - テーマ内のファイルは更新日時をバージョンにして、更新後にブラウザのキャッシュが残らないようにする
+ */
+define('AUTOMOBILE_SWIPER_VERSION', '11.2.10');
+
 function my_script_init()
-{ // WordPressに含まれているjquery.jsを読み込まない
+{
+    $theme_dir = get_template_directory();
+    $theme_uri = get_template_directory_uri();
+    $swiper_base = 'https://cdn.jsdelivr.net/npm/swiper@' . AUTOMOBILE_SWIPER_VERSION;
+
+    // WordPressに含まれているjquery.jsを読み込まない
     wp_deregister_script('jquery');
-    // jQueryの読み込み
-    wp_enqueue_script('jquery', '//code.jquery.com/jquery-3.6.1.min.js', "", "1.0.1");
-    wp_enqueue_script('main-js', get_template_directory_uri() . '/js/script.js', array('jquery'), '1.0.2', true);
-    wp_enqueue_style('style-css', get_template_directory_uri() . '/css/style.css', array(), '1.0.4');
+    // jQueryの読み込み（URLにバージョンが含まれるので ver は付けない）
+    wp_enqueue_script('jquery', 'https://code.jquery.com/jquery-3.6.1.min.js', array(), null);
+
+    // Google Fonts（Noto Sans JP / Oswald / Roboto をまとめて読み込む）
+    wp_enqueue_style(
+        'google-fonts',
+        'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Oswald:wght@700&family=Roboto:wght@400;500;700&display=swap',
+        array(),
+        null
+    );
+
+    // Swiper（CSS・JS 同じバージョン）
+    wp_enqueue_style('swiper', $swiper_base . '/swiper-bundle.min.css', array(), null);
+    wp_enqueue_script('swiper', $swiper_base . '/swiper-bundle.min.js', array(), null, true);
+
+    // テーマのCSS・JS
+    wp_enqueue_style('style-css', $theme_uri . '/css/style.css', array('google-fonts', 'swiper'), filemtime($theme_dir . '/css/style.css'));
+    wp_enqueue_script('main-js', $theme_uri . '/js/script.js', array('swiper'), filemtime($theme_dir . '/js/script.js'), true);
 
     // お問い合わせ（入力 → 確認 → 完了）の画面遷移は
     // プラグイン「Contact Form 7 Multi-Step Forms」で行うため、独自のJSは読み込まない
 }
+add_action('wp_enqueue_scripts', 'my_script_init');
 
 /* Contact Form 7：自動で挿入される<p>・<br>を無効化 */
 add_filter('wpcf7_autop_or_not', '__return_false');
-add_action('wp_enqueue_scripts', 'my_script_init');
-wp_enqueue_script( 'swiper', '//unpkg.com/swiper@8/swiper-bundle.min.js', "", "1.0.1", true );
-wp_enqueue_style( 'NotoSansJP', '//fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap' );
-wp_enqueue_style( 'Roboto', '//fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap' );
 
 function custom_posts_per_page($query)
 {

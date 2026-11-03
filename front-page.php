@@ -1,61 +1,4 @@
 <?php get_header(); ?>
-<div class="c-drawer js-drawer">
-      <div class="c-drawer__header">
-        <a href="/" class="c-drawer__logo">
-          <img
-            src="<?php echo esc_url(get_theme_file_uri()); ?>/img/top/hamburger-logo.svg"
-            width="114"
-            height="80"
-            alt="ExciteCode Automobile"
-          />
-        </a>
-        <button
-          type="button"
-          class="c-drawer__close js-drawerClose"
-          aria-label="メニューを閉じる"
-        >
-          <img
-            src="<?php echo esc_url(get_theme_file_uri()); ?>/img/top/hamburger-close-icon.svg"
-            width="22"
-            height="22"
-            alt="メニューを閉じる"
-          />
-        </button>
-      </div>
-      <nav class="c-drawer__nav">
-        <ul class="c-drawer__navList">
-          <li class="c-drawer__navItem">
-            <a href="/index.html" class="c-drawer__navLink">TOP</a>
-          </li>
-          <li class="c-drawer__navItem">
-            <a href="/about/" class="c-drawer__navLink">ABOUT</a>
-          </li>
-          <li class="c-drawer__navItem">
-            <a href="/service.html" class="c-drawer__navLink">SERVICE</a>
-          </li>
-          <li class="c-drawer__navItem">
-            <a href="<?php echo esc_url(get_post_type_archive_link('works')); ?>" class="c-drawer__navLink">WORKS</a>
-          </li>
-          <li class="c-drawer__navItem">
-            <a href="/news/" class="c-drawer__navLink">NEWS</a>
-          </li>
-          <li class="c-drawer__navItem">
-            <a href="<?php echo esc_url(home_url('/contact/')); ?>" class="c-drawer__navLink">CONTACT</a>
-          </li>
-          <li class="c-drawer__navItem">
-            <a href="<?php echo esc_url(home_url('/contact/')); ?>" class="c-drawer__navLink">プライバシーポリシー</a>
-          </li>
-        </ul>
-      </nav>
-      <div class="c-drawer__sns">
-        <img
-          src="<?php echo esc_url(get_theme_file_uri()); ?>/img/top/hamburger-sns-icons.svg"
-          width="103"
-          height="22"
-          alt="SNSアイコン"
-        />
-      </div>
-    </div>
 <main>
       <section class="p-fv">
         <div class="p-fv__inner">
@@ -156,7 +99,7 @@
             <p class="p-about__text">
               弊社は、輸入車選びのすべてを見つめ直し、新たなスタイルを提案するインポート・セレクト・ブランドです。これまでの憧れだけや批評家の意見といったイメージで選ぶのではなく、オーナー様となる方がクルマから直接感じるリアルな感性を第一にした、最良の一台との出会いをコーディネートいたします。
             </p>
-            <a href="/about/" class="p-about__link">
+            <a href="<?php echo esc_url(home_url('/about/')); ?>" class="p-about__link">
               <span class="p-about__linkText">READ MORE</span>
               <img
                 src="<?php echo esc_url(get_theme_file_uri()); ?>/img/top/about-arrow-icon.svg"
@@ -195,7 +138,7 @@
                 国を超え、メーカーを超え、高級の本質をお届けする特別な一台との出会いをサポートします。
               </p>
               <a
-                href="/service.html#purchase-support"
+                href="<?php echo esc_url(home_url('/service/#purchase-support')); ?>"
                 class="p-service__cardLink"
               >
                 <span class="p-service__cardLinkText">READ MORE</span>
@@ -230,7 +173,7 @@
                 高度な輸入車修理技術と数多くの修理実績、熟練の技術・設備であなたの愛車を完全に直します。
               </p>
               <a
-                href="/service.html#repair-maintenance"
+                href="<?php echo esc_url(home_url('/service/#repair-maintenance')); ?>"
                 class="p-service__cardLink"
               >
                 <span class="p-service__cardLinkText">READ MORE</span>
@@ -264,7 +207,7 @@
               <p class="p-service__cardText">
                 輸入車の取り扱いが県内トップクラス。専門の整備工場へ任せたいなら弊社へご相談ください。
               </p>
-              <a href="/service.html#inspection" class="p-service__cardLink">
+              <a href="<?php echo esc_url(home_url('/service/#inspection')); ?>" class="p-service__cardLink">
                 <span class="p-service__cardLinkText">READ MORE</span>
                 <img
                   src="<?php echo esc_url(get_theme_file_uri()); ?>/img/top/service-arrow-icon.svg"
@@ -452,7 +395,7 @@
               wp_reset_postdata();
               ?>
             </div>
-            <a href="/news/" class="p-news__more">
+            <a href="<?php echo esc_url(home_url('/news/')); ?>" class="p-news__more">
               <span class="p-news__moreText">READ MORE</span>
               <img
                 src="<?php echo esc_url(get_theme_file_uri()); ?>/img/top/news-arrow-icon.svg"

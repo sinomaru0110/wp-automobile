@@ -5,13 +5,11 @@
       <source
         media="(max-width: 768px)"
         srcset="<?php echo esc_url(get_theme_file_uri('/img/404/404-photo-sp.webp')); ?>"
-        width="730"
-        height="486"
       />
       <img
         src="<?php echo esc_url(get_theme_file_uri('/img/404/404-photo.webp')); ?>"
-        width="2540"
-        height="1200"
+        width="1270"
+        height="600"
         alt=""
         class="p-404__photoImg"
       />
@@ -23,10 +21,12 @@
     </p>
     <a href="<?php echo esc_url(home_url('/')); ?>" class="p-404__btn">
       <span class="p-404__btnIcon">
-        <picture>
-          <source media="(max-width: 768px)" srcset="<?php echo esc_url(get_theme_file_uri('/img/404/404-arrow-sp.svg')); ?>" />
-          <img src="<?php echo esc_url(get_theme_file_uri('/img/404/404-arrow.svg')); ?>" width="5" height="9" alt="" />
-        </picture>
+        <img
+          src="<?php echo esc_url(get_theme_file_uri('/img/404/404-arrow.svg')); ?>"
+          width="5"
+          height="9"
+          alt=""
+        />
       </span>
       <span class="p-404__btnText">トップページへ戻る</span>
     </a>

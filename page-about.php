@@ -1,33 +1,7 @@
 <?php get_header(); ?>
 <main>
-      <section class="p-aboutFv">
-        <div class="p-aboutFv__photo js-fvPhoto">
-          <picture>
-            <source media="(max-width: 768px)" srcset="<?php echo esc_url(get_theme_file_uri()); ?>/img/about/fv-photo-sp.webp" />
-            <img
-              src="<?php echo esc_url(get_theme_file_uri()); ?>/img/about/fv-photo.webp"
-              width="1270"
-              height="514"
-              alt="輸入車ショールームの様子"
-              class="p-aboutFv__photoImg"
-            />
-          </picture>
-        </div>
-        <div class="p-aboutFv__titleWrap js-fvTitle">
-          <div class="p-aboutFv__titleBg"></div>
-          <h1 class="p-aboutFv__title">
-            <span class="p-aboutFv__titleEn">About</span>
-            <span class="p-aboutFv__titleJa">私たちについて</span>
-          </h1>
-        </div>
-      </section>
-      <nav class="c-breadcrumb" aria-label="パンくずリスト" vocab="https://schema.org/" typeof="BreadcrumbList">
-      <?php if (function_exists('bcn_display')) { ?>
-        <div class="c-breadcrumb__list" vocab="http://schema.org/" typeof="BreadcrumbList">
-        <?php bcn_display(); ?>
-    </div>
-    <?php } ?>
-      </nav>
+      <?php get_template_part('template-parts/fv'); ?>
+      <?php get_template_part('template-parts/breadcrumb'); ?>
       <section class="p-aboutIntro">
         <nav class="p-aboutIntro__anker" aria-label="ページ内リンク">
           <ul class="p-aboutIntro__ankerList">
@@ -93,7 +67,7 @@
         </div>
         <div class="p-aboutPhilosophy__photo">
           <picture>
-            <source media="(max-width: 768px)" srcset="/img/about/philosophy-photo-sp.webp" />
+            <source media="(max-width: 768px)" srcset="<?php echo esc_url(get_theme_file_uri('/img/about/philosophy-photo-sp.webp')); ?>" />
             <img
               src="<?php echo esc_url(get_theme_file_uri()); ?>/img/about/philosophy-photo.webp"
               width="360"

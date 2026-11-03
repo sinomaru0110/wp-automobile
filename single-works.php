@@ -2,61 +2,8 @@
 <main>
   <?php if (have_posts()) : ?>
     <?php while (have_posts()) : the_post(); ?>
-      <section class="p-worksFv">
-        <div class="p-worksFv__photo js-fvPhoto">
-          <picture>
-            <source
-              media="(max-width: 768px)"
-              srcset="<?php echo esc_url(get_theme_file_uri('/img/works/fv-photo-sp.webp')); ?>"
-            />
-            <img
-              src="<?php echo esc_url(get_theme_file_uri('/img/works/fv-photo.webp')); ?>"
-              width="1270"
-              height="514"
-              alt="ショールーム内の黄色いスポーツカー"
-              class="p-worksFv__photoImg"
-            />
-          </picture>
-        </div>
-        <div class="p-worksFv__titleWrap js-fvTitle">
-          <div class="p-worksFv__titleBg"></div>
-          <h1 class="p-worksFv__title">
-            <span class="p-worksFv__titleEn">Works</span>
-            <span class="p-worksFv__titleJa">実績紹介</span>
-          </h1>
-        </div>
-      </section>
-      <nav class="c-breadcrumb" aria-label="パンくずリスト">
-        <ol class="c-breadcrumb__list">
-          <li class="c-breadcrumb__item">
-            <a href="<?php echo esc_url(home_url('/')); ?>" class="c-breadcrumb__link">Top</a>
-          </li>
-          <li class="c-breadcrumb__item" aria-hidden="true">
-            <img
-              src="<?php echo esc_url(get_theme_file_uri('/img/about/breadcrumb-separator.svg')); ?>"
-              width="20"
-              height="1"
-              alt="区切り線"
-              class="c-breadcrumb__separator"
-            />
-          </li>
-          <li class="c-breadcrumb__item">
-            <a href="<?php echo esc_url(get_post_type_archive_link('works')); ?>" class="c-breadcrumb__link">Works</a>
-          </li>
-          <li class="c-breadcrumb__item" aria-hidden="true">
-            <img
-              src="<?php echo esc_url(get_theme_file_uri('/img/about/breadcrumb-separator.svg')); ?>"
-              width="20"
-              height="1"
-              alt="区切り線"
-              class="c-breadcrumb__separator"
-            />
-          </li>
-          <li class="c-breadcrumb__item">
-            <span class="c-breadcrumb__current" aria-current="page"><?php the_title(); ?></span>
-          </li>
-        </ol>
-      </nav>
+      <?php get_template_part('template-parts/fv'); ?>
+      <?php get_template_part('template-parts/breadcrumb'); ?>
       <section class="p-worksList">
         <div class="p-worksList__body">
           <?php get_template_part('template-parts/works-tab'); ?>

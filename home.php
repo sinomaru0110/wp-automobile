@@ -1,48 +1,7 @@
 <?php get_header(); ?>
 
-<section class="p-newsFv">
-  <div class="p-newsFv__photo js-fvPhoto">
-    <picture>
-      <source
-        media="(max-width: 768px)"
-        srcset="<?php echo esc_url(get_theme_file_uri()); ?>/img/news/fv-photo-sp.webp"
-      />
-      <img
-        src="<?php echo esc_url(get_theme_file_uri()); ?>/img/news/fv-photo.webp"
-        width="1270"
-        height="514"
-        alt="黒い高級車の走行風景"
-        class="p-newsFv__photoImg"
-      />
-    </picture>
-  </div>
-  <div class="p-newsFv__titleWrap js-fvTitle">
-    <div class="p-newsFv__titleBg"></div>
-    <h1 class="p-newsFv__title">
-      <span class="p-newsFv__titleEn">News</span>
-      <span class="p-newsFv__titleJa">お知らせ</span>
-    </h1>
-  </div>
-</section>
-<nav class="c-breadcrumb" aria-label="パンくずリスト">
-  <ol class="c-breadcrumb__list">
-    <li class="c-breadcrumb__item">
-      <a href="/" class="c-breadcrumb__link">Top</a>
-    </li>
-    <li class="c-breadcrumb__item" aria-hidden="true">
-      <img
-        src="<?php echo esc_url(get_theme_file_uri()); ?>/img/about/breadcrumb-separator.svg"
-        width="20"
-        height="1"
-        alt="区切り線"
-        class="c-breadcrumb__separator"
-      />
-    </li>
-    <li class="c-breadcrumb__item">
-      <span class="c-breadcrumb__current" aria-current="page">News</span>
-    </li>
-  </ol>
-</nav>
+<?php get_template_part('template-parts/fv'); ?>
+<?php get_template_part('template-parts/breadcrumb'); ?>
 <main>
   <section class="p-newsList">
     <div class="p-newsList__body">
