@@ -383,27 +383,40 @@ function automobile_404_redirect()
 add_action('wp_footer', 'automobile_404_redirect', 99);
 
 /**
- * パンくずリスト：about / service ページは「TOP > About」「TOP > Service」と表示
+ * パンくずリスト：一部の一覧・固定ページは英語表記にする
+ * 例）「TOP > About」「TOP > Service」「TOP > Works」「TOP > News」
  */
-function automobile_is_english_breadcrumb_page()
+function automobile_english_breadcrumb_label()
 {
-    return is_page(array('about', 'service'));
+    if (is_page('about')) {
+        return 'About';
+    }
+    if (is_page('service')) {
+        return 'Service';
+    }
+    if (is_post_type_archive('works')) {
+        return 'Works';
+    }
+    if (is_home()) {
+        return 'News';
+    }
+    return '';
 }
 
-/** 現在のページ名を英語表記（About / Service）で表示 */
-function automobile_breadcrumb_title($title, $type, $id)
+/** 現在地（パンくずの末尾）を英語表記に置き換える */
+function automobile_breadcrumb_current_label($trail)
 {
-    if (automobile_is_english_breadcrumb_page() && (int) $id === get_queried_object_id()) {
-        return ucfirst(get_post_field('post_name', $id));
+    $label = automobile_english_breadcrumb_label();
+    if ($label !== '' && !empty($trail->breadcrumbs)) {
+        $trail->breadcrumbs[0]->set_title($label);
     }
-    return $title;
 }
-add_filter('bcn_breadcrumb_title', 'automobile_breadcrumb_title', 10, 3);
+add_action('bcn_after_fill', 'automobile_breadcrumb_current_label');
 
 /** ホームの表示名「トップ」はプラグイン設定のテンプレートに直書きのため、テンプレート側で置き換える */
 function automobile_breadcrumb_home_template($template, $type, $id)
 {
-    if (automobile_is_english_breadcrumb_page() && in_array('home', (array) $type, true)) {
+    if (automobile_english_breadcrumb_label() !== '' && in_array('home', (array) $type, true)) {
         return str_replace('トップ', 'TOP', $template);
     }
     return $template;
