@@ -384,7 +384,7 @@ add_action('wp_footer', 'automobile_404_redirect', 99);
 
 /**
  * パンくずリスト：一部の一覧・固定ページは英語表記にする
- * 例）「TOP > About」「TOP > Service」「TOP > Works」「TOP > News」
+ * 例）「TOP > About」「TOP > Service」「TOP > Contact」「TOP > Works」「TOP > News」
  */
 function automobile_english_breadcrumb_label()
 {
@@ -393,6 +393,9 @@ function automobile_english_breadcrumb_label()
     }
     if (is_page('service')) {
         return 'Service';
+    }
+    if (is_page('contact')) {
+        return 'Contact';
     }
     if (is_post_type_archive('works')) {
         return 'Works';
