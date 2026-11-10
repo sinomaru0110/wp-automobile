@@ -383,18 +383,18 @@ function automobile_404_redirect()
 add_action('wp_footer', 'automobile_404_redirect', 99);
 
 /**
- * パンくずリスト：about / service ページは「top > about」「top > service」と表示
+ * パンくずリスト：about / service ページは「TOP > About」「TOP > Service」と表示
  */
 function automobile_is_english_breadcrumb_page()
 {
     return is_page(array('about', 'service'));
 }
 
-/** 現在のページ名をスラッグ（about / service）で表示 */
+/** 現在のページ名を英語表記（About / Service）で表示 */
 function automobile_breadcrumb_title($title, $type, $id)
 {
     if (automobile_is_english_breadcrumb_page() && (int) $id === get_queried_object_id()) {
-        return get_post_field('post_name', $id);
+        return ucfirst(get_post_field('post_name', $id));
     }
     return $title;
 }
@@ -404,7 +404,7 @@ add_filter('bcn_breadcrumb_title', 'automobile_breadcrumb_title', 10, 3);
 function automobile_breadcrumb_home_template($template, $type, $id)
 {
     if (automobile_is_english_breadcrumb_page() && in_array('home', (array) $type, true)) {
-        return str_replace('トップ', 'top', $template);
+        return str_replace('トップ', 'TOP', $template);
     }
     return $template;
 }
