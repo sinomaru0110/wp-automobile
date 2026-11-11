@@ -226,89 +226,49 @@
           <div class="p-work__inner">
             <h2 class="p-work__head js-workTitle">Works</h2>
             <div class="p-work__panel">
-              <ul class="p-work__list">
-                <li class="p-work__item js-workItem">
-                  <div class="p-work__cardImg">
-                    <picture>
-                      <source
-                        media="(max-width: 768px)"
-                        srcset="<?php echo esc_url(get_theme_file_uri()); ?>/img/top/work-sp-photo-01.webp"
-                      />
-                      <img
-                        src="<?php echo esc_url(get_theme_file_uri()); ?>/img/top/work-photo-01.webp"
-                        width="290"
-                        height="229"
-                        alt="車のドアロックを開ける様子"
-                        class="p-work__cardPhoto"
-                      />
-                    </picture>
-                  </div>
-                  <div class="p-work__cardBody">
-                    <span class="p-work__cardTag">修理・整備</span>
-                    <h3 class="p-work__cardTitle">
-                      車のドアが開けられなくなった｜ドアロックの交換と...
-                    </h3>
-                    <p class="p-work__cardText">
-                      弊社は、輸入車選びのすべてを見つめ直し、新たなスタイルを提案するインポート・セレクト・ブランドです。これまでの憧れだけや批評家の意見といったイメージで選ぶのではなく...
-                    </p>
-                    <time class="p-work__cardDate" datetime="2022-09-02">2022.09.02</time>
-                  </div>
-                </li>
-                <li class="p-work__item js-workItem">
-                  <div class="p-work__cardImg">
-                    <picture>
-                      <source
-                        media="(max-width: 768px)"
-                        srcset="<?php echo esc_url(get_theme_file_uri()); ?>/img/top/work-sp-photo-02.webp"
-                      />
-                      <img
-                        src="<?php echo esc_url(get_theme_file_uri()); ?>/img/top/work-photo-02.webp"
-                        width="290"
-                        height="229"
-                        alt="車の板金修理の様子"
-                        class="p-work__cardPhoto"
-                      />
-                    </picture>
-                  </div>
-                  <div class="p-work__cardBody">
-                    <span class="p-work__cardTag">修理・整備</span>
-                    <h3 class="p-work__cardTitle">
-                      愛車のリアバンパーに傷がついた｜板金修理と塗装で...
-                    </h3>
-                    <p class="p-work__cardText">
-                      弊社は、輸入車選びのすべてを見つめ直し、新たなスタイルを提案するインポート・セレクト・ブランドです。これまでの憧れだけや批評家の意見といったイメージで選ぶのではなく...
-                    </p>
-                    <time class="p-work__cardDate" datetime="2022-08-26">2022.08.26</time>
-                  </div>
-                </li>
-                <li class="p-work__item js-workItem">
-                  <div class="p-work__cardImg">
-                    <picture>
-                      <source
-                        media="(max-width: 768px)"
-                        srcset="<?php echo esc_url(get_theme_file_uri()); ?>/img/top/work-sp-photo-03.webp"
-                      />
-                      <img
-                        src="<?php echo esc_url(get_theme_file_uri()); ?>/img/top/work-photo-03.webp"
-                        width="290"
-                        height="229"
-                        alt="輸入車の購入検討をする様子"
-                        class="p-work__cardPhoto"
-                      />
-                    </picture>
-                  </div>
-                  <div class="p-work__cardBody">
-                    <span class="p-work__cardTag">購入サポート</span>
-                    <h3 class="p-work__cardTitle">
-                      はじめて輸入車の購入を検討中のお客様｜憧れのBM...
-                    </h3>
-                    <p class="p-work__cardText">
-                      弊社は、輸入車選びのすべてを見つめ直し、新たなスタイルを提案するインポート・セレクト・ブランドです。これまでの憧れだけや批評家の意見といったイメージで選ぶのではなく...
-                    </p>
-                    <time class="p-work__cardDate" datetime="2022-08-20">2022.08.20</time>
-                  </div>
-                </li>
-              </ul>
+              <?php
+              // 実績（カスタム投稿 works）を新しい順に3件取る
+              $works_query = new WP_Query(array(
+                'post_type' => 'works',
+                'posts_per_page' => 3,
+              ));
+              if ($works_query->have_posts()) :
+              ?>
+                <ul class="p-work__list">
+                  <?php
+                  while ($works_query->have_posts()) :
+                    $works_query->the_post();
+                    $work_terms = get_the_terms(get_the_ID(), 'genre');
+                  ?>
+                    <li class="p-work__item js-workItem">
+                      <div class="p-work__cardImg">
+                        <?php if (has_post_thumbnail()) : ?>
+                          <?php the_post_thumbnail('medium', array('class' => 'p-work__cardPhoto')); ?>
+                        <?php else : ?>
+                          <img class="p-work__cardPhoto" src="<?php echo esc_url(get_theme_file_uri('/img/noimage/noimage.jpg')); ?>" width="290" height="229" alt="NoImage画像" />
+                        <?php endif; ?>
+                      </div>
+                      <div class="p-work__cardBody">
+                        <?php if (!is_wp_error($work_terms) && $work_terms) : ?>
+                          <a class="p-work__cardTag" href="<?php echo esc_url(get_term_link($work_terms[0])); ?>"><?php echo esc_html($work_terms[0]->name); ?></a>
+                        <?php endif; ?>
+                        <h3 class="p-work__cardTitle">
+                          <a href="<?php the_permalink(); ?>"><?php echo esc_html(mb_strimwidth(get_the_title(), 0, 50, '...')); ?></a>
+                        </h3>
+                        <p class="p-work__cardText">
+                          <?php echo esc_html(mb_strimwidth(wp_strip_all_tags(get_the_content(), true), 0, 160, '...')); ?>
+                        </p>
+                        <time class="p-work__cardDate" datetime="<?php echo esc_attr(get_the_date('Y-m-d')); ?>"><?php echo esc_html(get_the_date('Y.m.d')); ?></time>
+                      </div>
+                    </li>
+                  <?php endwhile; ?>
+                </ul>
+              <?php else : ?>
+                <p>記事が投稿されていません</p>
+              <?php
+              endif;
+              wp_reset_postdata();
+              ?>
               <a href="<?php echo esc_url(get_post_type_archive_link('works')); ?>" class="p-work__more">
                 <span class="p-work__moreText">READ MORE</span>
                 <img

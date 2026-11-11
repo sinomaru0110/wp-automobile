@@ -383,43 +383,41 @@ function automobile_404_redirect()
 add_action('wp_footer', 'automobile_404_redirect', 99);
 
 /**
- * パンくずリスト：一部の一覧・固定ページは英語表記にする
- * 例）「TOP > About」「TOP > Service」「TOP > Contact」「TOP > Works」「TOP > News」
+ * パンくずリスト：トップと各セクションは英語表記にする
+ * 例）「TOP > About」「TOP > News > カテゴリー名 > 記事タイトル」「TOP > Works > 記事タイトル」
  */
-function automobile_english_breadcrumb_label()
-{
-    if (is_page('about')) {
-        return 'About';
-    }
-    if (is_page('service')) {
-        return 'Service';
-    }
-    if (is_page('contact')) {
-        return 'Contact';
-    }
-    if (is_post_type_archive('works')) {
-        return 'Works';
-    }
-    if (is_home()) {
-        return 'News';
-    }
-    return '';
-}
+define('AUTOMOBILE_BREADCRUMB_PAGE_LABELS', array(
+    'about'   => 'About',
+    'service' => 'Service',
+    'contact' => 'Contact',
+));
 
-/** 現在地（パンくずの末尾）を英語表記に置き換える */
-function automobile_breadcrumb_current_label($trail)
+/** パンくずの各項目を英語表記に置き換える */
+function automobile_breadcrumb_english_labels($trail)
 {
-    $label = automobile_english_breadcrumb_label();
-    if ($label !== '' && !empty($trail->breadcrumbs)) {
-        $trail->breadcrumbs[0]->set_title($label);
+    foreach ($trail->breadcrumbs as $breadcrumb) {
+        $types = $breadcrumb->get_types();
+        if (in_array('post-root', $types, true) && in_array('post-post', $types, true)) {
+            // お知らせ一覧（投稿ページ）
+            $breadcrumb->set_title('News');
+        } elseif (in_array('post-works-archive', $types, true)) {
+            // 実績一覧（カスタム投稿 works のアーカイブ）
+            $breadcrumb->set_title('Works');
+        } elseif (in_array('post-page', $types, true)) {
+            // 固定ページ（About・Service・Contact）
+            $slug = get_post_field('post_name', $breadcrumb->get_id());
+            if (isset(AUTOMOBILE_BREADCRUMB_PAGE_LABELS[$slug])) {
+                $breadcrumb->set_title(AUTOMOBILE_BREADCRUMB_PAGE_LABELS[$slug]);
+            }
+        }
     }
 }
-add_action('bcn_after_fill', 'automobile_breadcrumb_current_label');
+add_action('bcn_after_fill', 'automobile_breadcrumb_english_labels');
 
 /** ホームの表示名「トップ」はプラグイン設定のテンプレートに直書きのため、テンプレート側で置き換える */
 function automobile_breadcrumb_home_template($template, $type, $id)
 {
-    if (automobile_english_breadcrumb_label() !== '' && in_array('home', (array) $type, true)) {
+    if (in_array('home', (array) $type, true)) {
         return str_replace('トップ', 'TOP', $template);
     }
     return $template;

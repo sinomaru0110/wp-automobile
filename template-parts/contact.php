@@ -1,6 +1,6 @@
 <?php
 /**
- * 共通お問い合わせ欄（トップ・About・実績一覧・お知らせ詳細で使用）
+ * 共通お問い合わせ欄（トップ・About・Service・実績一覧・お知らせ詳細で使用）
  */
 ?>
 <section class="c-contact">
