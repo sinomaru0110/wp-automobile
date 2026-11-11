@@ -160,6 +160,10 @@
   }
 }
 
+.p-work__cardTitle a {
+  color: inherit;
+}
+
 .p-work__cardTitle::after {
   content: "";
   position: absolute;
