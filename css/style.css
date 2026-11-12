@@ -1925,8 +1925,7 @@ select::-ms-expand {
   text-decoration: none;
   transition: background-color 0.3s, color 0.3s;
 }
-.p-news__itemTag:hover,
-.p-news__itemTag.is-current {
+.p-news__itemTag:hover, .p-news__itemTag.is-current {
   background-color: #000;
   color: #fff;
   opacity: 1;
@@ -2015,7 +2014,6 @@ select::-ms-expand {
 .p-aboutFv {
   position: relative;
   width: 100%;
-  max-width: 1270px;
   aspect-ratio: 1270/514;
   margin-inline: auto;
   margin-top: 236px;
@@ -2028,10 +2026,7 @@ select::-ms-expand {
 }
 @media screen and (max-width: 768px) {
   .p-aboutFv {
-    width: calc(100% - 10px);
     aspect-ratio: 365/280;
-    margin-left: 10px;
-    margin-right: 0px;
   }
 }
 
@@ -2478,7 +2473,6 @@ select::-ms-expand {
 .p-serviceFv {
   position: relative;
   width: 100%;
-  max-width: 1270px;
   aspect-ratio: 1270/514;
   margin-inline: auto;
   margin-top: 236px;
@@ -2491,10 +2485,7 @@ select::-ms-expand {
 }
 @media screen and (max-width: 768px) {
   .p-serviceFv {
-    width: 100%;
     aspect-ratio: 365/280;
-    margin-left: 10px;
-    margin-right: 0px;
   }
 }
 
@@ -2850,7 +2841,6 @@ select::-ms-expand {
 .p-newsFv {
   position: relative;
   width: 100%;
-  max-width: 1270px;
   aspect-ratio: 1270/514;
   margin-inline: auto;
   margin-top: 236px;
@@ -2863,10 +2853,7 @@ select::-ms-expand {
 }
 @media screen and (max-width: 768px) {
   .p-newsFv {
-    width: calc(100% - 10px);
     aspect-ratio: 365/280;
-    margin-left: 10px;
-    margin-right: 0px;
   }
 }
 
@@ -3175,8 +3162,7 @@ select::-ms-expand {
   text-decoration: none;
   transition: background-color 0.3s, color 0.3s;
 }
-.p-newsList__itemCategory:hover,
-.p-newsList__itemCategory.is-current {
+.p-newsList__itemCategory:hover, .p-newsList__itemCategory.is-current {
   background-color: #000;
   color: #fff;
   opacity: 1;
@@ -3434,7 +3420,6 @@ select::-ms-expand {
 .p-worksFv {
   position: relative;
   width: 100%;
-  max-width: 1270px;
   aspect-ratio: 1270/514;
   margin-inline: auto;
   margin-top: 236px;
@@ -3447,10 +3432,7 @@ select::-ms-expand {
 }
 @media screen and (max-width: 768px) {
   .p-worksFv {
-    width: calc(100% - 10px);
     aspect-ratio: 365/280;
-    margin-left: 10px;
-    margin-right: 0px;
   }
 }
 
@@ -4395,7 +4377,6 @@ select::-ms-expand {
 .p-contactFv {
   position: relative;
   width: 100%;
-  max-width: 1270px;
   aspect-ratio: 1270/514;
   margin-inline: auto;
   margin-top: 236px;
@@ -4408,10 +4389,7 @@ select::-ms-expand {
 }
 @media screen and (max-width: 768px) {
   .p-contactFv {
-    width: calc(100% - 10px);
     aspect-ratio: 365/280;
-    margin-left: 10px;
-    margin-right: 0px;
   }
 }
 
@@ -4664,6 +4642,156 @@ select::-ms-expand {
   .p-contactForm__submit {
     width: 100%;
   }
+}
+
+/* ---------- Contact Form 7 調整 ---------- */
+.p-contactForm,
+.p-contactConfirm {
+  scroll-margin-top: 140px;
+}
+@media screen and (max-width: 768px) {
+  .p-contactForm,
+  .p-contactConfirm {
+    scroll-margin-top: 100px;
+  }
+}
+
+.p-contactForm__form > .p-contactForm__row:first-of-type {
+  margin-top: 0;
+}
+
+.p-contactForm .wpcf7-form-control-wrap {
+  display: block;
+}
+
+.p-contactForm .wpcf7-list-item {
+  margin: 0;
+}
+
+.p-contactForm .wpcf7-acceptance .wpcf7-list-item-label {
+  position: relative;
+  display: inline-block;
+  padding-left: 25px;
+  padding-block: 12px;
+  margin-block: -12px;
+  font-family: "Noto Sans JP", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  color: #000;
+  cursor: pointer;
+}
+.p-contactForm .wpcf7-acceptance .wpcf7-list-item-label::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 17px;
+  height: 17px;
+  border: 1px solid #e2e2e2;
+  border-radius: 1px;
+  background-color: #fff;
+}
+
+.p-contactForm__checkbox:checked + .wpcf7-list-item-label::before {
+  background-color: #011950;
+  border-color: #011950;
+}
+.p-contactForm__checkbox:checked + .wpcf7-list-item-label::after {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 40%;
+  width: 8px;
+  height: 4px;
+  border-left: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  transform: translateY(-50%) rotate(-45deg);
+}
+
+.p-contactForm .wpcf7-not-valid {
+  border-color: #e20000;
+}
+
+.p-contactForm .wpcf7-not-valid-tip {
+  display: block;
+  margin-top: 8px;
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 13px;
+  color: #e20000;
+}
+
+.p-contactForm .screen-reader-response {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  border: 0;
+}
+
+.p-contactForm .wpcf7-response-output {
+  margin: 30px 0 0;
+  padding: 15px;
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.p-contactForm__hiddenSubmit {
+  display: none;
+}
+
+.p-contactConfirm__value {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.p-contactConfirm__btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+/* ---------- 確認画面（Contact Form 7 Multi-Step Forms） ---------- */
+.p-contactForm__submitWrap {
+  position: relative;
+}
+
+.p-contactForm__submit,
+.p-contactConfirm__btn {
+  appearance: none;
+  border: none;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.p-contactConfirm__btn--back {
+  border: 2px solid #011950;
+}
+
+.p-contactForm__submit:hover,
+.p-contactConfirm__btn:hover {
+  opacity: 0.8;
+}
+
+.p-contactForm .wpcf7-spinner,
+.p-contactConfirm .wpcf7-spinner {
+  position: absolute;
+  margin: 0;
+}
+
+.p-contactConfirm__buttons {
+  position: relative;
+}
+
+.p-contactConfirm .wpcf7-response-output {
+  margin: 30px 0 0;
+  padding: 15px;
+  font-size: 14px;
+  line-height: 1.6;
 }
 
 .p-contactConfirm {
@@ -5044,154 +5172,4 @@ select::-ms-expand {
   .p-404__btnText {
     color: #011950;
   }
-}
-
-/* ---------- Contact Form 7 調整 ---------- */
-.p-contactForm,
-.p-contactConfirm {
-  scroll-margin-top: 140px;
-}
-@media screen and (max-width: 768px) {
-  .p-contactForm,
-  .p-contactConfirm {
-    scroll-margin-top: 100px;
-  }
-}
-
-.p-contactForm__form > .p-contactForm__row:first-of-type {
-  margin-top: 0;
-}
-
-.p-contactForm .wpcf7-form-control-wrap {
-  display: block;
-}
-
-.p-contactForm .wpcf7-list-item {
-  margin: 0;
-}
-
-.p-contactForm .wpcf7-acceptance .wpcf7-list-item-label {
-  position: relative;
-  display: inline-block;
-  padding-left: 25px;
-  padding-block: 12px;
-  margin-block: -12px;
-  font-family: "Noto Sans JP", sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  color: #000;
-  cursor: pointer;
-}
-.p-contactForm .wpcf7-acceptance .wpcf7-list-item-label::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 17px;
-  height: 17px;
-  border: 1px solid #e2e2e2;
-  border-radius: 1px;
-  background-color: #fff;
-}
-
-.p-contactForm__checkbox:checked + .wpcf7-list-item-label::before {
-  background-color: #011950;
-  border-color: #011950;
-}
-.p-contactForm__checkbox:checked + .wpcf7-list-item-label::after {
-  content: "";
-  position: absolute;
-  left: 4px;
-  top: 40%;
-  width: 8px;
-  height: 4px;
-  border-left: 2px solid #fff;
-  border-bottom: 2px solid #fff;
-  transform: translateY(-50%) rotate(-45deg);
-}
-
-.p-contactForm .wpcf7-not-valid {
-  border-color: #e20000;
-}
-
-.p-contactForm .wpcf7-not-valid-tip {
-  display: block;
-  margin-top: 8px;
-  font-family: "Noto Sans JP", sans-serif;
-  font-size: 13px;
-  color: #e20000;
-}
-
-.p-contactForm .screen-reader-response {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  overflow: hidden;
-  clip: rect(1px, 1px, 1px, 1px);
-  clip-path: inset(50%);
-  border: 0;
-}
-
-.p-contactForm .wpcf7-response-output {
-  margin: 30px 0 0;
-  padding: 15px;
-  font-family: "Noto Sans JP", sans-serif;
-  font-size: 14px;
-  line-height: 1.6;
-}
-
-.p-contactForm__hiddenSubmit {
-  display: none;
-}
-
-.p-contactConfirm__value {
-  white-space: pre-wrap;
-  overflow-wrap: anywhere;
-}
-
-.p-contactConfirm__btn:disabled {
-  opacity: 0.6;
-  cursor: default;
-}
-
-/* ---------- 確認画面（Contact Form 7 Multi-Step Forms） ---------- */
-.p-contactForm__submitWrap {
-  position: relative;
-}
-
-.p-contactForm__submit,
-.p-contactConfirm__btn {
-  appearance: none;
-  border: none;
-  cursor: pointer;
-  line-height: 1;
-}
-
-.p-contactConfirm__btn--back {
-  border: 2px solid #011950;
-}
-
-.p-contactForm__submit:hover,
-.p-contactConfirm__btn:hover {
-  opacity: 0.8;
-}
-
-.p-contactForm .wpcf7-spinner,
-.p-contactConfirm .wpcf7-spinner {
-  position: absolute;
-  margin: 0;
-}
-
-.p-contactConfirm__buttons {
-  position: relative;
-}
-
-.p-contactConfirm .wpcf7-response-output {
-  margin: 30px 0 0;
-  padding: 15px;
-  font-size: 14px;
-  line-height: 1.6;
 }

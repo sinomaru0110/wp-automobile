@@ -3,7 +3,6 @@
 .p-worksFv {
   position: relative;
   width: 100%;
-  max-width: 1270px;
   aspect-ratio: 1270 / 514;
   margin-inline: auto;
   margin-top: 236px;
@@ -14,10 +13,7 @@
   }
 
   @include mq("md") {
-    width: calc(100% - 10px);
     aspect-ratio: 365 / 280;
-    margin-left: 10px;
-    margin-right: 0px;
   }
 }
 
